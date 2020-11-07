@@ -18,7 +18,7 @@ from multiprocessing import Value, Lock
 
 access_key = 'FGNMDCS360XGQJFW1VL2'
 secret_key = 'sTaOihNUFt2mMxAbNAQWo88WqfCDCKKfZ9WaAGFt'
-totalcount = Value('i',0)
+totalcount = Value('i',-1)
 
 mytime=time.time()
 filename = str(mytime)+".log"
@@ -106,9 +106,10 @@ def stastics(totalcount):
         IOPS=(end-begin)/10
         print("*************************当前10S内的IOPS***************************: "+str(IOPS))
 
+
 def main(*args):
 
-    threadnum=int(args[6])
+    threadnum = int(args[6])
     for i in range(0,threadnum):
         #multiprocessing.Process(target=onethread, args=("thread"+str(i),args[1],args[2],args[3],args[4],args[5])).start()
         multiprocessing.Process(target=myadd,args=()).start()
@@ -125,6 +126,7 @@ def main(*args):
         print(str(mytimestamp) + "  totalcount " + str(end))
         IOPS = (end - begin) / 10
         print("*************************当前10S内的IOPS***************************: " + str(IOPS))
+        print("Python is really fun")
 
 
 if __name__ =='__main__':
