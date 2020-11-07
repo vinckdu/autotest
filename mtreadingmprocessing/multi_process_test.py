@@ -18,7 +18,7 @@ from multiprocessing import Value, Lock
 
 access_key = 'FGNMDCS360XGQJFW1VL2'
 secret_key = 'sTaOihNUFt2mMxAbNAQWo88WqfCDCKKfZ9WaAGFt'
-totalcount = Value('i',0)
+totalcount = Value('i',-1)
 
 mytime=time.time()
 filename = str(mytime)+".log"
