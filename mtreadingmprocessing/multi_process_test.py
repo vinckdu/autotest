@@ -126,6 +126,7 @@ def main(*args):
         print(str(mytimestamp) + "  totalcount " + str(end))
         IOPS = (end - begin) / 10
         print("*************************当前10S内的IOPS***************************: " + str(IOPS))
+        print("Python is really fun")
 
 
 if __name__ =='__main__':
