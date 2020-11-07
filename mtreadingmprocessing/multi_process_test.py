@@ -106,9 +106,10 @@ def stastics(totalcount):
         IOPS=(end-begin)/10
         print("*************************当前10S内的IOPS***************************: "+str(IOPS))
 
+
 def main(*args):
 
-    threadnum=int(args[6])
+    threadnum = int(args[6])
     for i in range(0,threadnum):
         #multiprocessing.Process(target=onethread, args=("thread"+str(i),args[1],args[2],args[3],args[4],args[5])).start()
         multiprocessing.Process(target=myadd,args=()).start()
