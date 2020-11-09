@@ -64,7 +64,6 @@ def putobject(Endpoint, Bucket, Key, Body):
         print(e)
 
 def onethread(Threadname,Endpoint,Bucket,Key,Body,Objnum,totalcount, lock):
-    global totalcount
     Objnum=int(Objnum)
     s3 = boto3.resource(
     service_name ='s3',
