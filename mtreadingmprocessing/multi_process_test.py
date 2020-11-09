@@ -63,7 +63,7 @@ def putobject(Endpoint, Bucket, Key, Body):
         print("There is error when uploading")
         print(e)
 
-def onethread(Threadname,Endpoint,Bucket,Key,Body,Objnum):
+def onethread(Threadname,Endpoint,Bucket,Key,Body,Objnum,totalcount, lock):
     global totalcount
     Objnum=int(Objnum)
     s3 = boto3.resource(
@@ -78,8 +78,8 @@ def onethread(Threadname,Endpoint,Bucket,Key,Body,Objnum):
     for i in range(0, Objnum):
         myint = str(i)
         putobject(Endpoint,Bkt,Bucket+Threadname+Key+myint,body)
-        with multiprocessing.Lock():
-           totalcount += 1
+        with lock:
+           totalcount.value +=1
            #print("Current totalcount: ",totalcount)
        # print(Threadname+"test"+str(totalcount))
 
@@ -135,7 +135,7 @@ if __name__ =='__main__':
     totalcount = Value("i",0)
     threadnum = int(sys.argv[6])
     for i in range(0, threadnum):
-        multiprocessing.Process(target=onethread, args=("thread"+str(i),sys.argv[0],sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6])).start()
+        multiprocessing.Process(target=onethread, args=("thread"+str(i),sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],totalcount, lock)).start()
      #   multiprocessing.Process(target=myadd, args=(totalcount, lock)).start()
     while True:
         begin = totalcount.value
