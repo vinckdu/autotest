@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- 
 """
 @author:Vinck.Du
-@file: multithreaduploadobj.py
-@time: 2019/09/15
+@file: mul.py
+@time: 2020/11/09
 """
 import boto3
 import botocore
@@ -66,8 +66,8 @@ def putobject(Endpoint, Bucket, Key, Body):
 def onethread(Threadname,Endpoint,Bucket,Key,Body,Objnum,totalcount, lock):
     Objnum=int(Objnum)
     s3 = boto3.resource(
-    service_name ='s3',
-    aws_access_key_id = access_key,
+    service_name='s3',
+    aws_access_key_id=access_key,
     aws_secret_access_key = secret_key,
     endpoint_url = 'http://'+Endpoint+':8082',
     verify = False
