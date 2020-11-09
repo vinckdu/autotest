@@ -135,7 +135,7 @@ if __name__ =='__main__':
     totalcount = Value("i",0)
     threadnum = int(sys.argv[6])
     for i in range(0, threadnum):
-        multiprocessing.Process(target=onethread, args=("thread"+str(i),args[1],args[2],args[3],args[4],args[5])).start()
+        multiprocessing.Process(target=onethread, args=("thread"+str(i),sys.argv[0],sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6])).start()
      #   multiprocessing.Process(target=myadd, args=(totalcount, lock)).start()
     while True:
         begin = totalcount.value
