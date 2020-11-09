@@ -142,7 +142,7 @@ if __name__ =='__main__':
         time.sleep(10)
         mytimestamp = time.strftime("%Y-%m-%d %H:%M:%S  ")
         end = totalcount.value
-        print(str(mytimestamp) + "  totalcount " + str(end))
+        print(str(mytimestamp) + "  totalcount: " + str(end))
         IOPS = (end - begin) / 10
         print("*************************当前10S内的IOPS***************************: " + str(IOPS))
 
