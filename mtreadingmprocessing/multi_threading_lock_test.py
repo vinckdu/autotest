@@ -27,15 +27,15 @@ with open(filename,"a+") as log_file:
 def putobject(Endpoint, Bucket, Key, Body):
 
     global totalcount
-    dt=datetime.now()
-    mytime = dt.strftime( '%Y-%m-%d %H:%M:%S %f' )
+    dt = datetime.now()
+    mytime = dt.strftime('%Y-%m-%d %H:%M:%S %f')
 
     try:
         # s3.Bucket(Bucket).put_object(Key=Key,Body=Body)
         #GLACIER
-        starttime=time.time()
-        timestamp=str(time.strftime("%Y%m%d%H%M%S"))
-        newkey=Key+"_"+timestamp
+        starttime = time.time()
+        timestamp = str(time.strftime("%Y%m%d%H%M%S"))
+        newkey = Key+"_"+timestamp
         Bucket.put_object(Key=newkey,Body=Body)
         stoptime=time.time()
         delay=stoptime-starttime
@@ -88,7 +88,7 @@ for i in range(0,threadnum):
     threading.Thread(target=onethread, args=("thread"+str(i),sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])).start()
 while True:
     pass
-    begin=totalcount
+    begin = totalcount
     time.sleep(10)
     mytimestamp=time.strftime("%Y-%m-%d %H:%M:%S  ")
     print(str(mytimestamp) +"  totalcount "+ str(totalcount))
